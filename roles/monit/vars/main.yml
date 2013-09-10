@@ -1,0 +1,9 @@
+services: []
+
+mail: false
+
+webinterface: 
+  enabled: true
+  port: 2812
+  rw_group: monit
+  r_group: users

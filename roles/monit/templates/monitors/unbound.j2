@@ -1,0 +1,4 @@
+check process unbound with pidfile /var/run/unbound.pid
+        start program "/etc/init.d/unbound start"
+        stop program "/etc/init.d/unbound stop"
+        if 5 restarts within 5 cycles then timeout

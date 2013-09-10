@@ -1,0 +1,16 @@
+# Example usage of the role
+---
+- hosts: all
+  roles:
+    # Install monit
+    - { role: monit }
+  tasks:
+    - user: name=pgolm groups='monit'
+
+# Define Monitors
+- hosts: monit
+  vars:
+    monit_services:
+      - sshd
+  roles:
+    - { role: monit, services: monit_services }
