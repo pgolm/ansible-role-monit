@@ -1,27 +1,33 @@
 ---
 - name: monit | Install
   apt: name=monit state=present update_cache=yes cache_valid_time=900
-
+  tags: monit
+  
 - name: monit | Setup Webinterface
   template: src=webinterface.j2 dest=/etc/monit/conf.d/webinterface owner=root group=root
   when: webinterface.enabled
   notify: monit | restart
+  tags: monit
 
 - name: monit | Add RW Group
   group: name={{ webinterface.rw_group }} state=present
   when: webinterface.enabled
-  
+  tags: monit
+
 - name: monit | Add R Group
   group: name={{ webinterface.r_group }} state=present
   when: webinterface.enabled
+  tags: monit
 
 - name: monit | Setup Maildelivery
   template: src=mail.j2 dest=/etc/monit/conf.d/mail owner=root group=root
   when: mail
   notify: monit | restart
+  tags: monit
 
 - name: monit | Write monitors
   template: src=monitors/{{ item }}.j2 dest=/etc/monit/conf.d/{{ item }} owner=root group=root
   with_items:
     $services
   notify: monit | restart
+  tags: monit
