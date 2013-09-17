@@ -1,9 +1,10 @@
 services: []
+service_delete_unlisted: true
 
-mail: false
+mail_enabled: false
 
-webinterface: 
-  enabled: true
-  port: 2812
-  rw_group: monit
-  r_group: users
+webinterface_enabled: true 
+webinterface_bind: 0.0.0.0
+webinterface_port: 2812
+webinterface_rw_group: sudo
+webinterface_r_group: users

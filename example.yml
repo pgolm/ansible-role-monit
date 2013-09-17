@@ -1,0 +1,9 @@
+- hosts: host1
+  sudo: yes
+  roles:
+    - { role: monit, services: [ unbound ], webinterface_enabled: false }
+
+- hosts: host2
+  sudo: yes
+  roles:
+    - { role: monit, services: [ sshd ], webinterface_port: 8080 }

@@ -1,0 +1,5 @@
+check process quasselcore with pidfile /var/run/quasselcore.pid
+        start program "/etc/init.d/quasselcore start"
+        stop program "/etc/init.d/quasselcore stop"
+        if failed port 23602 then alert
+        if 5 restarts within 5 cycles then timeout

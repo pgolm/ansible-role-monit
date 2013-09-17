@@ -1,27 +1,26 @@
 ---
 - name: monit | Install
   apt: name=monit state=present update_cache=yes cache_valid_time=900
+  sudo: yes
   tags: monit
   
 - name: monit | Setup Webinterface
   template: src=webinterface.j2 dest=/etc/monit/conf.d/webinterface owner=root group=root
-  when: webinterface.enabled
   notify: monit | restart
   tags: monit
 
 - name: monit | Add RW Group
-  group: name={{ webinterface.rw_group }} state=present
-  when: webinterface.enabled
+  group: name={{ webinterface_rw_group }} state=present
+  when: webinterface_enabled
   tags: monit
 
 - name: monit | Add R Group
-  group: name={{ webinterface.r_group }} state=present
-  when: webinterface.enabled
+  group: name={{ webinterface_r_group }} state=present
+  when: webinterface_enabled
   tags: monit
 
-- name: monit | Setup Maildelivery
+- name: monit | Setup Mail
   template: src=mail.j2 dest=/etc/monit/conf.d/mail owner=root group=root
-  when: mail
   notify: monit | restart
   tags: monit
 
@@ -29,5 +28,18 @@
   template: src=monitors/{{ item }}.j2 dest=/etc/monit/conf.d/{{ item }} owner=root group=root
   with_items:
     $services
+  notify: monit | restart
+  tags: monit
+
+- name: monit | List monitors
+  shell: ls -1 /etc/monit/conf.d
+  when: service_delete_unlisted
+  register: old_monitors
+  tags: monit
+
+- name: monit | Remove unused monitors
+  file: path=/etc/monit/conf.d/{{ item }} state=absent 
+  with_items: old_monitors.stdout_lines
+  when: service_delete_unlisted and ( item not in services + ['mail', 'webinterface'] )
   notify: monit | restart
   tags: monit

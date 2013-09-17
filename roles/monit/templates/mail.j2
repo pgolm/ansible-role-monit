@@ -1,3 +1,4 @@
+{% if mail_enabled %}
 ## Set the list of mail servers for alert delivery. Multiple servers may be 
 ## specified using a comma separator. If the first mail server fails, Monit 
 # will use the second mail server in the list and so on. By default Monit uses 
@@ -50,3 +51,6 @@
 # set alert sysadm@foo.bar                       # receive all alerts
 # set alert manager@foo.bar only on { timeout }  # receive just service-
 #                                                # timeout alert
+{% else %}
+# mail setup
+{% endif %}
