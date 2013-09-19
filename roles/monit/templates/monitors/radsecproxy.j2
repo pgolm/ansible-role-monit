@@ -1,4 +1,5 @@
 check process radsecproxy with pidfile /var/run/radsecproxy.pid
         start program "/etc/init.d/radsecproxy start"
         stop program "/etc/init.d/radsecproxy stop"
+        
         if 5 restarts within 5 cycles then timeout

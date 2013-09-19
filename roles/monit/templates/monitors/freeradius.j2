@@ -1,0 +1,5 @@
+check process freeradius with pidfile "/var/run/freeradius/freeradius.pid" 
+        start program "/etc/init.d/freeradius start" 
+        stop program "/etc/init.d/freeradius stop" 
+
+		if 5 restarts within 5 cycles then timeout 
