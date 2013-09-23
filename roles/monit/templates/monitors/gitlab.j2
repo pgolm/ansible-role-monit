@@ -1,0 +1,11 @@
+check process gitlab.0 with pidfile "/home/git/gitlab/tmp/pids/unicorn.pid" 
+        start program "/etc/init.d/gitlab start" 
+        stop program "/etc/init.d/gitlab stop" 
+
+		if 3 restarts within 5 cycles then timeout 
+
+check process gitlab.1 with pidfile "/home/git/gitlab/tmp/pids/sidekiq.pid" 
+        start program "/etc/init.d/gitlab start" 
+        stop program "/etc/init.d/gitlab stop" 
+
+		if 3 restarts within 5 cycles then timeout 
