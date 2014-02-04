@@ -20,14 +20,3 @@ Role Variables
 * `monit_webinterface_rw_group`: Define group of users allowed to read and write on web interface. Defaults to `sudo`.
 * `monit_webinterface_r_group`: Define group of users allowed to read on web interface. Defaults to `users`.
 
-License
--------
-
-MIT
-
-Author Information
-------------------
-
-[GitHub project page](https://github.com/mtpereira/ansible-passenger)
-
-[Manuel Tiago Pereira](http://mtpereira.github.io)
