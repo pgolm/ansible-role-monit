@@ -1,7 +1,7 @@
 Monit
 ========
 
-Ansible role for configuring Monitor. Sample usage see [example.yml](example.yml).
+Ansible role for configuring Monit. Sample usage see [example.yml](example.yml).
 
 Requirements
 ------------
