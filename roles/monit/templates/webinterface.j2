@@ -1,8 +1,0 @@
-{% if webinterface_enabled %}
-set httpd port {{ webinterface_port }} and
-    use address {{ webinterface_bind }}
-    allow @{{ webinterface_rw_group }}
-    allow @{{ webinterface_r_group }} readonly
-{% else %}
-# No Webinterface
-{% endif %}
