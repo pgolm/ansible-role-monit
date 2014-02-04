@@ -10,13 +10,13 @@
   tags: monit
 
 - name: monit | Add RW Group
-  group: name={{ webinterface_rw_group }} state=present
-  when: webinterface_enabled
+  group: name={{ monit_webinterface_rw_group }} state=present
+  when: monit_webinterface_enabled
   tags: monit
 
 - name: monit | Add R Group
-  group: name={{ webinterface_r_group }} state=present
-  when: webinterface_enabled
+  group: name={{ monit_webinterface_r_group }} state=present
+  when: monit_webinterface_enabled
   tags: monit
 
 - name: monit | Setup Mail
@@ -27,19 +27,19 @@
 - name: monit | Write monitors
   template: src=monitors/{{ item }}.j2 dest=/etc/monit/conf.d/{{ item }} owner=root group=root
   with_items:
-    $services
+    $monit_services
   notify: monit | restart
   tags: monit
 
 - name: monit | List monitors
   shell: ls -1 /etc/monit/conf.d
-  when: service_delete_unlisted
+  when: monit_service_delete_unlisted
   register: old_monitors
   tags: monit
 
 - name: monit | Remove unused monitors
   file: path=/etc/monit/conf.d/{{ item }} state=absent 
   with_items: old_monitors.stdout_lines
-  when: service_delete_unlisted and ( item not in services + ['mail', 'webinterface'] )
+  when: monit_service_delete_unlisted and ( item not in monit_services + ['mail', 'webinterface'] )
   notify: monit | restart
   tags: monit

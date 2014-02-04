@@ -1,0 +1,8 @@
+{% if monit_webinterface_enabled %}
+set httpd port {{ monit_webinterface_port }} and
+    use address {{ monit_webinterface_bind }}
+    allow @{{ monit_webinterface_rw_group }}
+    allow @{{ monit_webinterface_r_group }} readonly
+{% else %}
+# No Webinterface
+{% endif %}
