@@ -1,0 +1,9 @@
+check process apache with pidfile /var/run/apache2.pid
+    start program = "/etc/init.d/apache2 start"
+    stop program  = "/etc/init.d/apache2 stop"
+    if cpu > 60% for 3 cycles then alert
+    if cpu > 80% for 5 cycles then restart
+    if totalmem > 400.0 MB for 5 cycles then restart
+    if children > 250 then restart
+    if loadavg(5min) greater than 20 for 8 cycles then alert
+    group server
