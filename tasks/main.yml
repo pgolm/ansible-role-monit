@@ -1,45 +1,44 @@
 ---
-- name: monit | Install
+- name: Install package
   apt: name=monit state=present update_cache=yes cache_valid_time=900
   sudo: yes
   tags: monit
-  
-- name: monit | Setup Webinterface
+
+- name: Setup webinterface
   template: src=webinterface.j2 dest=/etc/monit/conf.d/webinterface owner=root group=root
-  notify: monit | restart
+  notify: restart monit
   tags: monit
 
-- name: monit | Add RW Group
+- name: Add RW group
   group: name={{ monit_webinterface_rw_group }} state=present
   when: monit_webinterface_enabled
   tags: monit
 
-- name: monit | Add R Group
+- name: Add R group
   group: name={{ monit_webinterface_r_group }} state=present
   when: monit_webinterface_enabled
   tags: monit
 
-- name: monit | Setup Mail
+- name: Setup mail alerts
   template: src=mail.j2 dest=/etc/monit/conf.d/mail owner=root group=root
-  notify: monit | restart
+  notify: restart monit
   tags: monit
 
-- name: monit | Write monitors
+- name: Write monitors
   template: src=monitors/{{ item }}.j2 dest=/etc/monit/conf.d/{{ item }} owner=root group=root
-  with_items:
-    $monit_services
-  notify: monit | restart
+  with_items: monit_services
+  notify: restart monit
   tags: monit
 
-- name: monit | List monitors
+- name: List monitors
   shell: ls -1 /etc/monit/conf.d
   when: monit_service_delete_unlisted
   register: old_monitors
   tags: monit
 
-- name: monit | Remove unused monitors
-  file: path=/etc/monit/conf.d/{{ item }} state=absent 
+- name: Remove unused monitors
+  file: path=/etc/monit/conf.d/{{ item }} state=absent
   with_items: old_monitors.stdout_lines
   when: monit_service_delete_unlisted and ( item not in monit_services + ['mail', 'webinterface'] )
-  notify: monit | restart
+  notify: restart monit
   tags: monit
