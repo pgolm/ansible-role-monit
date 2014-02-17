@@ -19,4 +19,5 @@ Role Variables
 * `monit_webinterface_port`: Port for web interface. Defaults to `2812`.
 * `monit_webinterface_rw_group`: Define group of users allowed to read and write on web interface. Defaults to `sudo`.
 * `monit_webinterface_r_group`: Define group of users allowed to read on web interface. Defaults to `users`.
-
+* `monit_apache_rules`: List of monitoring rules for apache service. You should adjust them to your needs.
+* `monit_apache_groups`: List of groups for the apache service.
