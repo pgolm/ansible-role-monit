@@ -20,4 +20,6 @@ Role Variables
 * `monit_webinterface_rw_group`: Define group of users allowed to read and write on web interface. Defaults to `sudo`.
 * `monit_webinterface_r_group`: Define group of users allowed to read on web interface. Defaults to `users`.
 * `monit_apache_rules`: List of monitoring rules for apache service. You should adjust them to your needs.
-* `monit_apache_groups`: List of groups for the apache service.
+* `monit_apache_groups`: List of groups for the apache service. This list is empty by default.
+* `monit_memcached_rules`: List of monitoring rules for memcached service. You should adjust them to your needs.
+* `monit_memcached_groups`: List of groups for the memcached service. This list is empty by default.
