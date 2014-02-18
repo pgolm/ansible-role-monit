@@ -6,8 +6,6 @@ monit_mail_enabled: false
 monit_webinterface_enabled: true
 monit_webinterface_bind: 0.0.0.0
 monit_webinterface_port: 2812
-monit_webinterface_rw_group: sudo
-monit_webinterface_r_group: users
 
 monit_apache_rules:
  - "if totalcpu > 80% for 3 cycles then alert"
