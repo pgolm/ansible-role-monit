@@ -20,7 +20,7 @@
   tags: monit
 
 - name: Setup mail alerts
-  copy: src=monit_mail dest=/etc/monit/conf.d/mail owner=root group=root
+  copy: src={{ monit_mail_conf_file }} dest=/etc/monit/conf.d/mail owner=root group=root
   notify: restart monit
   when: monit_mail_enabled
   tags: monit

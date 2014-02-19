@@ -2,6 +2,7 @@ monit_services: []
 monit_service_delete_unlisted: true
 
 monit_mail_enabled: false
+monit_mail_conf_file: "monit_mail"
 
 monit_webinterface_enabled: true
 monit_webinterface_bind: 0.0.0.0
