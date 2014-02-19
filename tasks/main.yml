@@ -9,14 +9,19 @@
   notify: restart monit
   tags: monit
 
+- name: Add webinterface ACL rules
+  group: name={{ item }} state=present
+  with_items: monit_webinterface_acl_rules
+  when: monit_webinterface_enabled and monit_webinterface_acl_rules is defined
+
 - name: Add RW group
   group: name={{ monit_webinterface_rw_group }} state=present
-  when: monit_webinterface_enabled
+  when: monit_webinterface_enabled and monit_webinterface_rw_group is defined
   tags: monit
 
 - name: Add R group
   group: name={{ monit_webinterface_r_group }} state=present
-  when: monit_webinterface_enabled
+  when: monit_webinterface_enabled and monit_webinterface_r_group is defined
   tags: monit
 
 - name: Setup mail alerts
