@@ -12,7 +12,7 @@ Role Variables
 --------------
 
 * `monit_services`: List of services to be monitorized by monit.
-* `monit_service_detele_unlisted`: Remove existing service monitorization configurations not declared in the `services`. Defaults to `true`.
+* `monit_service_delete_unlisted`: Remove existing service monitorization configurations not declared in the `services`. Defaults to `true`.
 * `monit_mail_enabled`: Enable mail alerts. Defaults to `false`.
 * `monit_webinterface_enabled`: Enable monit web interface. Defaults to `true`.
 * `monit_webinterface_bind`: IP address to bind web interface. Defaults to `0.0.0.0` (listen for external requests).
