@@ -1,8 +1,18 @@
+# {{ ansible_managed }}
 {% if monit_webinterface_enabled %}
 set httpd port {{ monit_webinterface_port }} and
     use address {{ monit_webinterface_bind }}
+{% if monit_webinterface_acl_rules is defined %}
+{% for rule in monit_webinterface_acl_rules %}
+    allow {{ rule }}
+{% endfor %}
+{% endif %}
+{% if monit_webinterface_rw_group is defined %}
     allow @{{ monit_webinterface_rw_group }}
+{% endif %}
+{% if monit_webinterface_r_group is defined %}
     allow @{{ monit_webinterface_r_group }} readonly
+{% endif %}
 {% else %}
 # No Webinterface
 {% endif %}
