@@ -1,0 +1,10 @@
+---
+- name: mail - Setup mail alerts
+  template:
+    src: mail.j2
+    dest: /etc/monit/conf.d/mail
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart monit
+  when: monit_mail_enabled

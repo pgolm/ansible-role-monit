@@ -1,0 +1,9 @@
+{% set monit_monitor = item -%}
+# {{ ansible_managed }}
+
+check process {{ monit_monitor.process }} with pidfile {{ monit_monitor.pidfile }}
+  start program = "{{ monit_monitor.start }}"
+  stop program = "{{ monit_monitor.stop }}"
+{% for rule in monit_monitor.rules %}
+  {{ rule }}
+{% endfor %}
