@@ -6,23 +6,3 @@
     owner: root
     group: root
   notify: restart monit
-
-- name: web - Add webinterface ACL rules
-  group:
-    name: "{{ item }}"
-    state: present
-  with_items: monit_webinterface_acl_rules
-  when: monit_webinterface_enabled and monit_webinterface_acl_rules is defined
-
-- name: web - Add RW group
-  group:
-    name: "{{ monit_webinterface_rw_group }}"
-    state: present
-  when: monit_webinterface_enabled and monit_webinterface_rw_group is defined
-
-- name: web - Add R group
-  group:
-    name: "{{ monit_webinterface_r_group }}"
-    state: present
-  when: monit_webinterface_enabled and monit_webinterface_r_group is defined
-
