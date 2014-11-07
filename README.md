@@ -12,7 +12,8 @@ Role Variables
 --------------
 
 * `monit_services`: List of hashes of services to be monitorized by monit.
-  * `process`: Name of the process for monit reference.
+  * `name`: Name of the process or host.
+  * `type`: Type of monitorization, "process" and "system" are supported.
   * `pidfile`: Path for this service's pidfile.
   * `start`: Command that starts the service.
   * `stop`: Command that stop the service.
