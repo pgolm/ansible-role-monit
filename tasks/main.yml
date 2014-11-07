@@ -2,11 +2,8 @@
 - include: pkg.yml
   tags: monit_pkg
 
-- include: web.yml
-  tags: monit_web
-
-- include: mail.yml
-  tags: monit_mail
+- include: config.yml
+  tags: monit_config
 
 - include: monitors.yml
   tags: monit_monitors

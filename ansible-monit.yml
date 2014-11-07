@@ -3,6 +3,9 @@
   sudo: yes
 
   vars:
+    monit_cycle: 120
+    monit_log_destination: syslog
+    monit_eventqueue_dir: /var/lib/monit/events
     monit_services:
       - name: sshd
         type: process
