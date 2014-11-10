@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
     ap.vm.network :private_network, ip: "10.0.0.40"
 
     ap.vm.provision :ansible do |ansible|
-      ansible.playbook = "#{vmname}.yml"
+      ansible.playbook = "vagrant.yml"
       ansible.verbose = "vvvv"
     end
   end
