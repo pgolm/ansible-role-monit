@@ -24,3 +24,18 @@ Role Variables
 * `monit_apache_groups`: List of groups for the apache service. This list is empty by default.
 * `monit_memcached_rules`: List of monitoring rules for memcached service. You should adjust them to your needs.
 * `monit_memcached_groups`: List of groups for the memcached service. This list is empty by default.
+
+
+LICENSE
+-------
+MIT
+
+CONTRIBUTE
+----------
+	
+Feel free to contribute by add issue and pull request.
+
+CONTRIBUTORS
+------------
+* [Manuel Tiago Pereira](http://mtpereira.github.io/)
+* [Peter Golm](https://github.com/pgolm)
