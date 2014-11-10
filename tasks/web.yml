@@ -1,0 +1,8 @@
+---
+- name: web - Setup webinterface
+  template:
+    src: webinterface.j2
+    dest: /etc/monit/conf.d/webinterface
+    owner: root
+    group: root
+  notify: restart monit

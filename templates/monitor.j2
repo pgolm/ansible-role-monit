@@ -1,0 +1,13 @@
+{% set monit_monitor = item -%}
+# {{ ansible_managed }}
+
+{% if monit_monitor.type == 'process' %}
+check process {{ monit_monitor.name }} with pidfile {{ monit_monitor.pidfile }}
+  start program = "{{ monit_monitor.start }}"
+  stop program = "{{ monit_monitor.stop }}"
+{% elif monit_monitor.type == 'system' %}
+check system {{ monit_monitor.name }}
+{% endif -%}
+{% for rule in monit_monitor.rules %}
+  {{ rule }}
+{% endfor %}
