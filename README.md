@@ -11,9 +11,31 @@ An ansible ready host.
 Role Variables
 --------------
 
-* `monit_services`: List of services to be monitorized by monit.
-* `monit_service_delete_unlisted`: Remove existing service monitorization configurations not declared in the `services`. Defaults to `true`.
+* `monit_cycle`: Time between checks in seconds. Defaults to `120`.
+* `monit_log_destination`: Where the log will be written. Can be a path to a file or "syslog", which will write to syslog daemon. Defaults to `/var/log/monit.log`.
+* `monit_state_file`: State file path. Defaults to `/var/lib/monit/state`.
+* `monit_id_file`: Id file path. Defaults to `/var/lib/monit/id`.
+* `monit_eventqueue_dir`: Event queue directory path. It is only used when this variable is defined. Defaults to `/var/lib/monit/events`.
+* `monit_eventqueue_slots`: Event queue slots. It is only used when `monit_eventqueue_dir` is defined. Defaults to `100`.
+* `monit_services`: List of hashes of services to be monitorized by monit.
+  * `name`: Name of the process or host.
+  * `type`: Type of monitorization, "process" and "system" are supported.
+  * `pidfile`: Path for this service's pidfile.
+  * `start`: Command that starts the service.
+  * `stop`: Command that stop the service.
+  * `rules`: List of rules to be included in this service.
+* `monit_service_detele_unlisted`: Remove existing service monitorization configurations not declared in the `services`. Defaults to `true`.
 * `monit_mail_enabled`: Enable mail alerts. Defaults to `false`.
+* `monit_mailserver_host`: Mailserver host address. Defaults to `localhost`.
+* `monit_mailserver_host`: Mailserver host port. Defaults to `25`.
+* `monit_mailserver_user`: Username for authentication on mailserver.
+* `monit_mailserver_password`: Password for authentication on mailserver.
+* `monit_mailserver_timeout`: Timeout for mailserver connection. Defaults to `5`.
+* `monit_mailserver_ssl_version`: If defined, monit will use this algorithm for SSL connection to the mail server. Possible values are `SSLAUTO`, `SSLV2`, `SSLV3`, `TLSV1`, `TLSV11`, `TLSV12`.
+* `monit_alert_address`: Mail address where the alerts will be sent to.
+* `monit_alert_mail_from`: Sender mail address.
+* `monit_alert_mail_subject`: Mail subject.
+* `monit_alert_mail_message`: Mail message body.
 * `monit_webinterface_enabled`: Enable monit web interface. Defaults to `true`.
 * `monit_webinterface_bind`: IP address to bind web interface. Defaults to `0.0.0.0` (listen for external requests).
 * `monit_webinterface_port`: Port for web interface. Defaults to `2812`.

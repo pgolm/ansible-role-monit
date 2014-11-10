@@ -1,0 +1,18 @@
+---
+- name: monitors - Write monitors
+  template:
+    src: monitor.j2
+    dest: "/etc/monit/monitrc.d/{{ item.name }}"
+    owner: root
+    group: root
+  with_items: monit_services
+  notify: restart monit
+
+- name: monitors - Remove unused monitors
+  file:
+    path: "/etc/monit/monitrc.d/{{ item }}"
+    state: absent
+  with_fileglob:
+    - /etc/monit/monitrc.d/*
+  when: monit_service_delete_unlisted and (item|basename not in monit_services + ['mail', 'webinterface'])
+  notify: restart monit
