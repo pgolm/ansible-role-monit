@@ -2,10 +2,11 @@
 
 set mailserver {{ monit_mailserver_host }} port {{ monit_mailserver_port }}
   username "{{ monit_mailserver_user }}" password "{{ monit_mailserver_password }}"
-  with timeout {{ monit_mailserver_timeout | default(5) }} seconds
   {% if monit_mailserver_ssl_version is defined -%}
   using {{ monit_mailserver_ssl_version }}
   {% endif -%}
+  with timeout {{ monit_mailserver_timeout | default(5) }} seconds
+
 
 set alert {{ monit_alert_address }}
 
