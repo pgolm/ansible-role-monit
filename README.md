@@ -60,4 +60,5 @@ Feel free to contribute by add issue and pull request.
 CONTRIBUTORS
 ------------
 * [Manuel Tiago Pereira](http://mtpereira.github.io/)
+* [Panagiotis Moustafellos](https://github.com/pmoust)
 * [Peter Golm](https://github.com/pgolm)
