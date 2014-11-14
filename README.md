@@ -47,6 +47,10 @@ Role Variables
 * `monit_memcached_rules`: List of monitoring rules for memcached service. You should adjust them to your needs.
 * `monit_memcached_groups`: List of groups for the memcached service. This list is empty by default.
 
+Custom facts
+------------
+
+This role writes a `monit_services_configured` on `/etc/ansible/facts.d/monit.fact` in order to keep track of the configured monitors between different plays. This helps us removing unused monitors.
 
 LICENSE
 -------
