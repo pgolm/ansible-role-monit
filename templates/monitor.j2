@@ -14,6 +14,8 @@ check system {{ monit_monitor.name }}
 {% elif monit_monitor.type == 'host' %}
 check host {{ monit_monitor.name }} with address {{ monit_monitor.target }}
 {% endif -%}
+{% if monit_monitor.rules is defined %}
 {% for rule in monit_monitor.rules %}
   {{ rule }}
 {% endfor %}
+{% endif %}

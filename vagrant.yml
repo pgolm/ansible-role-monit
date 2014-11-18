@@ -12,9 +12,6 @@
         target: /var/run/sshd.pid
         start: /usr/sbin/service sshd start
         stop: /usr/sbin/service sshd stop
-        rules:
-          - "if failed port 22 protocol ssh then restart"
-          - "if 5 restarts within 5 cycles then timeout"
       - name: apache
         type: process
         target: /var/run/apache2.pid
