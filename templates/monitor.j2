@@ -3,8 +3,12 @@
 
 {% if monit_monitor.type == 'process' %}
 check process {{ monit_monitor.name }} with pidfile {{ monit_monitor.pidfile }}
+{% if monit_monitor.start is defined %}
   start program = "{{ monit_monitor.start }}"
+{% endif %}
+{% if monit_monitor.stop is defined %}
   stop program = "{{ monit_monitor.stop }}"
+{% endif %}
 {% elif monit_monitor.type == 'system' %}
 check system {{ monit_monitor.name }}
 {% endif -%}
