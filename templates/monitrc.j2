@@ -10,3 +10,4 @@ set eventqueue
   slots {{ monit_eventqueue_slots | default(100) }}
 {% endif %}
 include /etc/monit/conf.d/*
+include /etc/monit/monitrc.d/*
