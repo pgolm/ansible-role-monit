@@ -39,6 +39,8 @@
   when: monit_service_delete_unlisted and item|basename not in ansible_local.monit.monit_configured_services
   notify: restart monit
 
+- meta: flush_handlers
+
 - name: monitors - Start configured monitors
   shell: monit start {{ item }}
   with_items: ansible_local.monit.monit_configured_services
