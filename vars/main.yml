@@ -1,0 +1,3 @@
+---
+monit_unstartable_monitors: ['webinterface', 'mail']
+
