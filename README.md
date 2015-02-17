@@ -23,6 +23,8 @@ Role Variables
   * `target`: Target of monitorization. Should be a pidfile, an address or undefined, depending on the `type` of service.
   * `start`: Command that starts the service. Optional.
   * `stop`: Command that stop the service. Optional.
+  * `user`: Linux username of the user starting the program. Optional.
+  * `group`: Linux group of the user starting the program. Optional.
   * `rules`: List of rules to be included in this service. Optional.
 * `monit_service_detele_unlisted`: Remove existing service monitorization configurations not declared in the `services`. Defaults to `true`.
 * `monit_mail_enabled`: Enable mail alerts. Defaults to `false`.
