@@ -2,7 +2,7 @@
 - name: monitors - Write monitors
   template:
     src: monitor.j2
-    dest: "/etc/monit/conf.d/{{ item.name }}"
+    dest: "/etc/monit/conf.d/{{ item.name | replace (' ', '_') }}"
     owner: root
     group: root
   with_items: monit_services
@@ -38,3 +38,10 @@
   with_items: monit_services_present.stdout_lines
   when: monit_service_delete_unlisted and item|basename not in ansible_local.monit.monit_configured_services
   notify: restart monit
+
+- meta: flush_handlers
+
+- name: monitors - Start configured monitors
+  command: monit start {{ item }}
+  with_items: ansible_local.monit.monit_configured_services
+  when: monit_start_monitors and ansible_local.monit.monit_configured_services is defined and item not in monit_unstartable_monitors
