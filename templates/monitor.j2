@@ -1,8 +1,9 @@
 {% set monit_monitor = item -%}
-# {{ ansible_managed }}
+{% set monit_monitor_name = item.name | replace(' ', '_') -%}
+# Managed by Ansible, do not edit manually!
 
 {% if monit_monitor.type == 'process' %}
-check process {{ monit_monitor.name }} with pidfile {{ monit_monitor.target }}
+check process {{ monit_monitor_name }} with pidfile {{ monit_monitor.target }}
 {% if monit_monitor.start is defined %}
   start program = "{{ monit_monitor.start }}"
 {% endif %}
@@ -10,11 +11,13 @@ check process {{ monit_monitor.name }} with pidfile {{ monit_monitor.target }}
   stop program = "{{ monit_monitor.stop }}"
 {% endif %}
 {% elif monit_monitor.type == 'system' %}
-check system {{ monit_monitor.name }}
+check system {{ monit_monitor_name }}
 {% elif monit_monitor.type == 'host' %}
-check host {{ monit_monitor.name }} with address {{ monit_monitor.target }}
+check host {{ monit_monitor_name }} with address {{ monit_monitor.target }}
 {% elif monit_monitor.type == 'filesystem' %}
-check filesystem {{ monit_monitor.name }} with path {{ monit_monitor.target }}
+check filesystem {{ monit_monitor_name }} with path {{ monit_monitor.target }}
+{% elif monit_monitor.type == 'file' %}
+check file {{ monit_monitor_name }} with path {{ monit_monitor.target }}
 {% endif -%}
 {% if monit_monitor.rules is defined %}
 {% for rule in monit_monitor.rules %}

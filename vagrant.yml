@@ -34,6 +34,11 @@
         target: google.com
         rules:
           - "if failed port 443 type tcpSSL protocol http then alert"
+      - name: timezone config
+        type: file
+        target: /etc/timezone
+        rules:
+          - "if failed uid root then alert"
     monit_webinterface_enabled: true
     monit_webinterface_acl_rules:
       - "localhost"

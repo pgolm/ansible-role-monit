@@ -2,7 +2,7 @@
 - name: monitors - Write monitors
   template:
     src: monitor.j2
-    dest: "/etc/monit/conf.d/{{ item.name }}"
+    dest: "/etc/monit/conf.d/{{ item.name | replace (' ', '_') }}"
     owner: root
     group: root
   with_items: monit_services
