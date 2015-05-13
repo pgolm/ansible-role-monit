@@ -6,7 +6,7 @@ Ansible role for configuring Monit. Sample usage see [example.yml](http://github
 Requirements
 ------------
 
-An ansible ready host.
+An Ansible ready host.
 
 Role Variables
 --------------
