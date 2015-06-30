@@ -1,7 +1,9 @@
 {
   "monit_configured_services": [
 {% for service in monit_services %}
+{% if service.enabled|default('True') %}
     "{{ service.name }}",
+{% endif %}
 {% endfor %}
 {% if monit_mail_enabled %}
     "mail",
