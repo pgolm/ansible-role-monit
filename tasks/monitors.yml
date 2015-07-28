@@ -2,7 +2,7 @@
 - name: monitors - Write monitors
   template:
     src: monitor.j2
-    dest: "/etc/monit/conf.d/{{ item.name }}"
+    dest: "{{ monit_includes }}/{{ item.name }}"
     owner: root
     group: root
   with_items: monit_services
@@ -27,13 +27,13 @@
   when: monit_write_facts.changed
 
 - name: monitors - List configured monitors
-  command: ls -1 /etc/monit/conf.d/
+  command: ls -1 {{ monit_includes }}
   register: monit_services_present
   changed_when: false
 
 - name: monitors - Remove unused monitors
   file:
-    path: "/etc/monit/conf.d/{{ item }}"
+    path: "{{ monit_includes }}/{{ item }}"
     state: absent
   with_items: monit_services_present.stdout_lines
   when: monit_service_delete_unlisted and item|basename not in ansible_local.monit.monit_configured_services

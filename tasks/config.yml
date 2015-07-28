@@ -1,8 +1,17 @@
 ---
+- include_vars: debian.yml
+  when:  ansible_os_family == "Debian"
+
+- include_vars: redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: create includes folder
+  file: path={{ monit_includes }} state=directory mode=0600
+
 - name: config - Setup monitrc
   template:
     src: monitrc.j2
-    dest: /etc/monit/monitrc
+    dest: "{{monitrc_conf}}"
     owner: root
     group: root
     mode: 0700
@@ -11,7 +20,7 @@
 - name: config - Setup webinterface
   template:
     src: webinterface.j2
-    dest: /etc/monit/conf.d/webinterface
+    dest: "{{ monit_includes }}/webinterface"
     owner: root
     group: root
     mode: 0644
@@ -20,7 +29,7 @@
 - name: config - Setup mail alerts
   template:
     src: mail.j2
-    dest: /etc/monit/conf.d/mail
+    dest: "{{ monit_includes }}/mail"
     owner: root
     group: root
     mode: 0644

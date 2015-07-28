@@ -1,0 +1,3 @@
+---
+monitrc_conf: /etc/monit/monitrc
+monit_includes: /etc/monit/conf.d
