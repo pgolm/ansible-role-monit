@@ -1,0 +1,7 @@
+---
+- name: pkg - Install package
+  apt:
+    name: monit
+    update_cache: yes
+    cache_valid_time: 3600
+    state: present

@@ -4,6 +4,7 @@
 vmname = File.basename(File.expand_path(File.dirname(__FILE__)))
 
 Vagrant.configure("2") do |config|
+
   config.vm.define vmname do |ap|
     ap.vm.box = "opscode-debian-7.4.0"
     ap.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-7.4_chef-provisionerless.box"
@@ -21,4 +22,23 @@ Vagrant.configure("2") do |config|
       ansible.verbose = "vvvv"
     end
   end
+
+  config.vm.define 'Centos-65' do |ap|
+    ap.vm.box = "Centos65"
+    ap.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box"
+    ap.vm.hostname = 'Centos-65'
+
+    ap.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+      v.customize ["modifyvm", :id, "--memory", 512]
+    end
+
+    ap.vm.network :private_network, ip: "10.0.0.41"
+
+    ap.vm.provision :ansible do |ansible|
+      ansible.playbook = "vagrant.yml"
+      ansible.verbose = "vvvv"
+    end
+  end
+
 end

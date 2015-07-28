@@ -9,4 +9,4 @@ set eventqueue
   basedir {{ monit_eventqueue_dir | default('/var/lib/monit/events') }}
   slots {{ monit_eventqueue_slots | default(100) }}
 {% endif %}
-include /etc/monit/conf.d/*
+include {{ monit_includes }}/*
