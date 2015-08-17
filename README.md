@@ -27,7 +27,7 @@ Role Variables
 * `monit_service_detele_unlisted`: Remove existing service monitorization configurations not declared in the `services`. Defaults to `true`.
 * `monit_mail_enabled`: Enable mail alerts. Defaults to `false`.
 * `monit_mailserver_host`: Mailserver host address. Defaults to `localhost`.
-* `monit_mailserver_host`: Mailserver host port. Defaults to `25`.
+* `monit_mailserver_port`: Mailserver host port. Defaults to `25`.
 * `monit_mailserver_user`: Username for authentication on mailserver.
 * `monit_mailserver_password`: Password for authentication on mailserver.
 * `monit_mailserver_timeout`: Timeout for mailserver connection. Defaults to `5`.
