@@ -2,7 +2,7 @@
 - name: web - Setup webinterface
   template:
     src: webinterface.j2
-    dest: /etc/monit/conf.d/webinterface
+    dest: "{{ monit_includes }}/webinterface"
     owner: root
     group: root
   notify: restart monit

@@ -2,7 +2,7 @@
 - name: mail - Setup mail alerts
   template:
     src: mail.j2
-    dest: /etc/monit/conf.d/mail
+    dest: {{ monit_includes }}/mail
     owner: root
     group: root
     mode: 0644
