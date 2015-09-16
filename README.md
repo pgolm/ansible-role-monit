@@ -60,11 +60,13 @@ MIT
 
 CONTRIBUTE
 ----------
-	
+
 Feel free to contribute by add issue and pull request.
 
 CONTRIBUTORS
 ------------
+* [Eduardo de Vera Toquero](https://github.com/etux)
 * [Manuel Tiago Pereira](http://mtpereira.github.io/)
 * [Panagiotis Moustafellos](https://github.com/pmoust)
 * [Peter Golm](https://github.com/pgolm)
+* [Svend Vanderveken](https://github.com/svendx4f)
