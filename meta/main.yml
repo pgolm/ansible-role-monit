@@ -8,10 +8,13 @@ galaxy_info:
   - name: Debian
     versions:
     - all
-  - name: Ubuntu
+  - name: EL
     versions:
     - all
-  - name: EL
+  - name: RedHat
+    version:
+    - all
+  - name: Ubuntu
     versions:
     - all
 
