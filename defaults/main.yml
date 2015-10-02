@@ -14,6 +14,8 @@ monit_webinterface_enabled: true
 monit_webinterface_bind: 0.0.0.0
 monit_webinterface_port: 2812
 
+mmonit_address: http://monit:r3gistered@tower.dlabs.si:8080/collector
+
 monit_apache_rules:
  - "if totalcpu > 80% for 3 cycles then alert"
  - "if totalmem > 400.0 MB for 5 cycles then alert"
