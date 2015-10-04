@@ -35,9 +35,11 @@ Role Variables
 * `monit_mailserver_timeout`: Timeout for mailserver connection. Defaults to `5`.
 * `monit_mailserver_ssl_version`: If defined, monit will use this algorithm for SSL connection to the mail server. Possible values are `SSLAUTO`, `SSLV2`, `SSLV3`, `TLSV1`, `TLSV11`, `TLSV12`.
 * `monit_alert_address`: Mail address where the alerts will be sent to.
-* `monit_alert_mail_from`: Sender mail address.
-* `monit_alert_mail_subject`: Mail subject.
-* `monit_alert_mail_message`: Mail message body.
+* `monit_alert_mail_format`: A hash of options for mail-format.
+  * `from`: Sender mail address.
+  * `reply-to`: A reply-to mail address.
+  * `subject`: Mail subject.
+  * `message`: Mail message body.
 * `monit_webinterface_enabled`: Enable monit web interface. Defaults to `true`.
 * `monit_webinterface_bind`: IP address to bind web interface. Defaults to `0.0.0.0` (listen for external requests).
 * `monit_webinterface_port`: Port for web interface. Defaults to `2812`.
@@ -65,6 +67,7 @@ Feel free to contribute by add issue and pull request.
 
 CONTRIBUTORS
 ------------
+* [Anthony Dmitriyev](https://github.com/antstorm)
 * [Eduardo de Vera Toquero](https://github.com/etux)
 * [Manuel Tiago Pereira](http://mtpereira.github.io/)
 * [Panagiotis Moustafellos](https://github.com/pmoust)
