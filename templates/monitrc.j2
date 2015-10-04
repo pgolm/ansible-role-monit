@@ -4,6 +4,8 @@ set daemon {{ monit_cycle }}
 set logfile {{ monit_log_destination }}
 set statefile {{ monit_state_file }}
 set idfile {{ monit_id_file }}
+set mmonit {{ mmonit_address }}
+
 {% if monit_eventqueue_dir is defined %}
 set eventqueue
   basedir {{ monit_eventqueue_dir | default('/var/lib/monit/events') }}

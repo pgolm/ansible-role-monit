@@ -6,6 +6,7 @@
     owner: root
     group: root
   with_items: monit_services
+  when: "{{ item.enabled|default('True') }}"
   notify: restart monit
 
 - name: monitors - Create facts directory

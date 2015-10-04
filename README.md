@@ -56,6 +56,7 @@ Custom facts
 
 This role writes a `monit_services_configured` on `/etc/ansible/facts.d/monit.fact` in order to keep track of the configured monitors between different plays. This helps us removing unused monitors.
 
+Add Enabled: False to service if you don't want to use it (temporarily, etc...)
 LICENSE
 -------
 MIT
