@@ -67,6 +67,7 @@ Feel free to contribute by add issue and pull request.
 
 CONTRIBUTORS
 ------------
+* [Anthony Dmitriyev](https://github.com/antstorm)
 * [Eduardo de Vera Toquero](https://github.com/etux)
 * [Manuel Tiago Pereira](http://mtpereira.github.io/)
 * [Panagiotis Moustafellos](https://github.com/pmoust)
