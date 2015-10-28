@@ -27,6 +27,7 @@ Role Variables
   * `group`: Linux group of the user starting the program. Optional.
   * `rules`: List of rules to be included in this service. Optional.
 * `monit_service_detele_unlisted`: Remove existing service monitorization configurations not declared in the `services`. Defaults to `true`.
+* `monit_start_monitors`: Start configured `services`. Defaults to `true`.
 * `monit_mail_enabled`: Enable mail alerts. Defaults to `false`.
 * `monit_mailserver_host`: Mailserver host address. Defaults to `localhost`.
 * `monit_mailserver_port`: Mailserver host port. Defaults to `25`.
@@ -50,6 +51,10 @@ Role Variables
 * `monit_apache_groups`: List of groups for the apache service. This list is empty by default.
 * `monit_memcached_rules`: List of monitoring rules for memcached service. You should adjust them to your needs.
 * `monit_memcached_groups`: List of groups for the memcached service. This list is empty by default.
+
+The following variables are used for the logic of the role and should not be changed by the users.
+
+* `monit_unstartable_monitors`: Config files present in `/etc/monit/conf.d` that are not actually monitors and, as such, should no be started by our role when `monit_start_monitors` is true.
 
 Custom facts
 ------------
