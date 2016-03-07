@@ -3,6 +3,14 @@ Monit
 
 Ansible role for configuring Monit. Sample usage see [example.yml](http://github.com/pgolm/ansible-playbook-monit/blob/master/example.yml).
 
+Install
+-------
+Install this role with [ansible-galaxy](https://galaxy.ansible.com/pgolm/monit/).
+
+```shell
+$ ansible-galaxy install pgolm.monit
+```
+
 Requirements
 ------------
 

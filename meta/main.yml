@@ -18,7 +18,7 @@ galaxy_info:
     versions:
     - all
 
-  categories:
+  galaxy_tags:
     - monitoring
     - system
 dependencies: []
