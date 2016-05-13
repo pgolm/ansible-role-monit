@@ -38,11 +38,11 @@ Role Variables
 * `monit_mail_enabled`: Enable mail alerts. Defaults to `false`.
 * `monit_mailserver_host`: Mailserver host address. Defaults to `localhost`.
 * `monit_mailserver_port`: Mailserver host port. Defaults to `25`.
-* `monit_mailserver_user`: Username for authentication on mailserver.
-* `monit_mailserver_password`: Password for authentication on mailserver.
+* `monit_mailserver_user`: Username for authentication on mailserver. Optional
+* `monit_mailserver_password`: Password for authentication on mailserver. Optional
 * `monit_mailserver_timeout`: Timeout for mailserver connection. Defaults to `5`.
 * `monit_mailserver_ssl_version`: If defined, monit will use this algorithm for SSL connection to the mail server. Possible values are `SSLAUTO`, `SSLV2`, `SSLV3`, `TLSV1`, `TLSV11`, `TLSV12`.
-* `monit_alert_address`: Mail address where the alerts will be sent to.
+* `monit_alert_addresses`: List of mail addresses where the alerts will be sent to.
 * `monit_alert_mail_format`: A hash of options for mail-format.
   * `from`: Sender mail address.
   * `reply-to`: A reply-to mail address.
@@ -53,7 +53,7 @@ Role Variables
 * `monit_webinterface_port`: Port for web interface. Defaults to `2812`.
 * `monit_webinterface_rw_group`: Define group of users allowed to read and write on web interface. It is only applied when defined and is empty by default.
 * `monit_webinterface_r_group`: Define group of users allowed to read on web interface. It is only applied when defined and is empty by default.
-* `monit_webinterface_acl_rules`: List of ACL rules for the web interface, such as "localhost" or "hauk:password". It is only applied when defined and is empty by default.
+* `monit_webinterface_acl_rules`: List of ACL rules for the web interface, such as "localhost" or "hauk:password". It is only applied when defined and is empty by default. You should probably define at least one for the httpd service to start.
 * `monit_apache_rules`: List of monitoring rules for apache service. You should adjust them to your needs.
 * `monit_apache_groups`: List of groups for the apache service. This list is empty by default.
 * `monit_memcached_rules`: List of monitoring rules for memcached service. You should adjust them to your needs.
