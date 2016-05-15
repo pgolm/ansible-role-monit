@@ -83,3 +83,4 @@ CONTRIBUTORS
 * [Peter Golm](https://github.com/pgolm)
 * [Roozbeh Farahbod](https://github.com/roozbehf)
 * [Svend Vanderveken](https://github.com/svendx4f)
+* [Tom Naessens](https://github.com/Silox)
