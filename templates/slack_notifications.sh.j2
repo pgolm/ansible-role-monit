@@ -1,0 +1,13 @@
+#!/bin/sh
+/usr/bin/curl \
+    -X POST \
+    -s \
+    --data-urlencode "payload={ \
+        \"channel\": \"{{ monit_slack_channel }}\", \
+        \"username\": \"Monit\", \
+        \"pretext\": \"{{ project }} | $MONIT_DATE\", \
+        \"color\": \"danger\", \
+        \"icon_emoji\": \":ghost:\", \
+        \"text\": \"$MONIT_SERVICE - $MONIT_DESCRIPTION\" \
+    }" \
+    {{ monit_slack_url }}

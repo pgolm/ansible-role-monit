@@ -1,19 +1,52 @@
+project: abc
+
 monit_cycle: 120
 monit_log_destination: /var/log/monit.log
 monit_lib_folder: /var/lib/monit
 monit_state_file: "{{ monit_lib_folder }}/state"
 monit_id_file: "{{ monit_lib_folder }}/id"
 
-monit_services: []
-monit_service_delete_unlisted: true
+monit_services:
+- name: $HOST
+  type: system
+  rules:
+    - "if loadavg (1min) > 1 for 2 times within 3 cycles then alert"
+    - "if loadavg (5min) > 2 for 2 times within 3 cycles then alert"
+    - "if memory usage > 90% for 2 times within 3 cycles then alert"
+    - "if swap usage > 25% for 2 times within 3 cycles then alert"
+    - "if cpu usage (user) > 70% for 2 times within 3 cycles then alert"
+    - "if cpu usage (system) > 30% for 2 times within 3 cycles then alert"
+    - "if cpu usage (wait) > 20% for 2 times within 3 cycles then alert"
 
-monit_mail_enabled: false
+monit_service_delete_unlisted: false
+
+monit_mail_enabled: no
 monit_mailserver_host: localhost
 monit_mailserver_port: 25
 
+monit_slack_enabled: no
+monit_slack_channel: "channel"
+monit_slack_url: "https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxx"
+
 monit_webinterface_enabled: true
-monit_webinterface_bind: 0.0.0.0
+monit_webinterface_bind: 127.0.0.1
 monit_webinterface_port: 2812
+monit_webinterface_enabled: true
+monit_webinterface_acl_rules:
+      - "localhost"
+
+
+monit_alert_address: noc@example.com
+monit_alert_mail_from: monitor@example.com
+monit_alert_mail_subject: alert -- $EVENT $SERVICE
+monit_alert_mail_message: |+
+      $EVENT Service $SERVICE
+                 Date:        $DATE
+                 Action:      $ACTION
+                 Host:        $HOST
+                 Description: $DESCRIPTION
+            Your faithful employee,
+            Monit
 
 monit_apache_rules:
  - "if totalcpu > 80% for 3 cycles then alert"

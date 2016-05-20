@@ -6,7 +6,10 @@
   when: ansible_os_family == "RedHat"
 
 - name: create includes folder
-  file: path={{ monit_includes }} state=directory mode=0600
+  file: path="{{ monit_includes }}" state=directory mode=0600
+
+- name: ensure path folder existed
+  file: path="{{ monit_path }}" state=directory mode=0600
 
 - name: create lib folder
   file: path="{{ monit_lib_folder }}" state=directory mode=0600
@@ -38,3 +41,13 @@
     mode: 0644
   notify: restart monit
   when: monit_mail_enabled
+
+- name: config - Setup slack alerts
+  template:
+    src: slack_notifications.sh.j2
+    dest: "{{ monit_path }}/slack_notifications.sh"
+    owner: root
+    group: root
+    mode: 0755
+  notify: restart monit
+  when: monit_slack_enabled

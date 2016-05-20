@@ -1,5 +1,8 @@
 ---
 - name: pkg - Install package
   yum:
-    name: monit
+    name: "{{ item }}"
     state: present
+  with_items:
+  - monit
+  - libselinux-python

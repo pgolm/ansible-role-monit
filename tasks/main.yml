@@ -1,4 +1,7 @@
 ---
+- name: Include project-specific variables
+  include_vars: "{{ project }}.yml"
+
 - include: debian/pkg.yml
   tags: monit_pkg
   when: ansible_os_family == "Debian"
