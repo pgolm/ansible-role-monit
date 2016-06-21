@@ -17,6 +17,12 @@ monit_services:
     - "if cpu usage (user) > 70% for 2 times within 3 cycles then alert"
     - "if cpu usage (system) > 30% for 2 times within 3 cycles then alert"
     - "if cpu usage (wait) > 20% for 2 times within 3 cycles then alert"
+    - "if space free < 5% then alert"
+- name: ssh_logins
+  type: file
+  target: "/var/log/auth.log"
+  rules:
+    - "if match 'Accepted publickey' then alert"
 
 monit_service_delete_unlisted: false
 
