@@ -17,9 +17,30 @@
         target: /var/run/apache2.pid
         start: /usr/sbin/service apache2 start
         stop: /usr/sbin/service apache2 stop
+        restart: /usr/sbin/service apache2 restart
         rules:
           - "if failed port 80 protocol http then restart"
           - "if 5 restarts within 5 cycles then timeout"
+      - name: my_file
+        type: file
+        target: /tmp/foo.bar
+        rules:
+          - "if changed timestamp then exec \"/bin/bash -c 'echo `data` >> /tmp/foo.bar.changed'\""
+      - name: my_filesystem
+        type: filesystem
+        target: /dev/sda1
+        rules:
+          - "if space usage > 80% for 5 times within 15 cycles then alert"
+      - name: my_directory
+        type: directory
+        target: /foo
+        rules:
+          - "if timestamp < 1 hour then alert"
+      - name: google
+        type: host
+        target: google.com
+        rules:
+          - "if failed port 443 type tcpSSL protocol http then alert"
       - name: localhost
         type: system
         rules:
@@ -29,11 +50,11 @@
           - "if cpu usage (user) > 70% for 8 cycles then alert"
           - "if cpu usage (system) > 40% for 8 cycles then alert"
           - "if cpu usage (wait) > 20%  for 8 cycles then alert"
-      - name: google
-        type: host
-        target: google.com
+      - name: my_network
+        type: network
+        target: 127.0.0.1
         rules:
-          - "if failed port 443 type tcpSSL protocol http then alert"
+          - "if saturation > 90% then alert"
     monit_webinterface_enabled: true
     monit_webinterface_acl_rules:
       - "localhost"
