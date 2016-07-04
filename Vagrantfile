@@ -36,6 +36,7 @@ Vagrant.configure("2") do |config|
     ap.vm.network :private_network, ip: "10.0.0.41"
     ap.vm.network :forwarded_port, guest: 2812, host: 2814
 
+    ap.vm.provision "shell", inline: "ln -sf /sbin/service /usr/sbin/service"
     ap.vm.provision :ansible do |ansible|
       ansible.playbook = "vagrant.yml"
     end
