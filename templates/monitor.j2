@@ -12,12 +12,14 @@ check process {{ monit_monitor.name }}
   start program = "{{ monit_monitor.start }}"
   {%- if monit_monitor.user is defined %} as uid {{monit_monitor.user}}{% endif %}
   {%- if monit_monitor.group is defined %} and gid {{monit_monitor.group}}{% endif %}
+  {%- if monit_monitor.timeout is defined %} with timeout {{monit_monitor.timeout}} seconds{% endif %}
 {% endif %}
 
 {% if monit_monitor.stop is defined %}
   stop program = "{{ monit_monitor.stop }}"
   {%- if monit_monitor.user is defined %} as uid {{monit_monitor.user}}{% endif %}
   {%- if monit_monitor.group is defined %} and gid {{monit_monitor.group}}{% endif %}
+  {%- if monit_monitor.timeout is defined %} with timeout {{monit_monitor.timeout}} seconds{% endif %}
 {% endif %}
 {% elif monit_monitor.type == 'system' %}
 check system {{ monit_monitor.name }}
@@ -25,7 +27,7 @@ check system {{ monit_monitor.name }}
 check host {{ monit_monitor.name }} with address {{ monit_monitor.target }}
 {% elif monit_monitor.type == 'filesystem' %}
 check filesystem {{ monit_monitor.name }} with path {{ monit_monitor.target }}
-{% endif -%}
+{% endif %}
 
 {% if monit_monitor.rules is defined %}
 {% for rule in monit_monitor.rules %}
