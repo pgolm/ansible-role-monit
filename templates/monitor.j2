@@ -12,7 +12,7 @@ check process {{ monit_monitor.name }}
   start program = "{{ monit_monitor.start }}"
   {%- if monit_monitor.user is defined %} as uid {{monit_monitor.user}}{% endif %}
   {%- if monit_monitor.group is defined %} and gid {{monit_monitor.group}}{% endif %}
-  {%- if monit_monitor.timeout is defined %} with timeout {{monit_monitor.timeout}}{% endif %}
+  {%- if monit_monitor.timeout is defined %} with timeout {{monit_monitor.timeout}} seconds{% endif %}
 {% endif %}
 
 {% if monit_monitor.stop is defined %}
