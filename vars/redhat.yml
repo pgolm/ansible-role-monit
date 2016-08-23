@@ -1,4 +1,13 @@
 ---
-monitrc_conf: /etc/monit.conf
+monitrc_conf: /etc/monitrc
 monit_includes: /etc/monit.d
 monit_path: /etc/monit
+
+monit_services:
+- name: ssh_logins
+  type: file
+  target: "/var/log/secure"
+#not every working day, from 9AM to 7pm
+  time: "\"* 9-19 * * 1-5\""
+  rules:
+    - "if match 'Accepted publickey' then alert"

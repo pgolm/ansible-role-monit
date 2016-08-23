@@ -17,14 +17,7 @@ monit_services:
     - "if cpu usage (user) > 70% for 2 times within 3 cycles then alert"
     - "if cpu usage (system) > 30% for 2 times within 3 cycles then alert"
     - "if cpu usage (wait) > 20% for 2 times within 3 cycles then alert"
-    - "if space free < 5% then alert"
-- name: ssh_logins
-  type: file
-  target: "/var/log/auth.log"
-#not every working day, from 9AM to 7pm
-  time: "\"* 9-19 * * 1-5\"" 
-  rules:
-    - "if match 'Accepted publickey' then alert"
+#    - "if space free < 5% then alert"
 
 monit_service_delete_unlisted: false
 
@@ -43,8 +36,10 @@ monit_webinterface_enabled: true
 monit_webinterface_acl_rules:
       - "localhost"
 
+#monit_alert_mail_format: true 
 
-monit_alert_address: noc@example.com
+
+monit_alert_addresses: [noc@example.com]
 monit_alert_mail_from: monitor@example.com
 monit_alert_mail_subject: alert -- $EVENT $SERVICE
 monit_alert_mail_message: |+
