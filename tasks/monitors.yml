@@ -5,7 +5,17 @@
     dest: "{{ monit_includes }}/{{ item.name }}"
     owner: root
     group: root
-  with_items: monit_services
+  with_items: "{{ monit_services }}"
+  when: not (monit_services is undefined or monit_services is none or monit_services | trim == '')
+  notify: restart monit
+
+- name: monitors - Write ssh monitors
+  template:
+    src: monitor.j2
+    dest: "{{ monit_includes }}/{{ item.name }}"
+    owner: root
+    group: root
+  with_items: "{{ monit_ssh_services  }}"
   notify: restart monit
 
 - name: monitors - Create facts directory

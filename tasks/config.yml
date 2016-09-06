@@ -1,9 +1,11 @@
 ---
 - include_vars: debian.yml
   when:  ansible_os_family == "Debian"
+  tags: always
 
 - include_vars: redhat.yml
   when: ansible_os_family == "RedHat"
+  tags: always
 
 - name: create includes folder
   file: path="{{ monit_includes }}" state=directory mode=0600
@@ -13,7 +15,7 @@
 
 - name: create lib folder
   file: path="{{ monit_lib_folder }}" state=directory mode=0600
-  
+
 - name: config - Setup monitrc
   template:
     src: monitrc.j2
@@ -41,6 +43,7 @@
     mode: 0644
   notify: restart monit
   when: monit_mail_enabled
+  tags: mail
 
 - name: config - Setup slack alerts
   template:

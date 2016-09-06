@@ -3,7 +3,7 @@ monitrc_conf: /etc/monitrc
 monit_includes: /etc/monit.d
 monit_path: /etc/monit
 
-monit_services:
+monit_ssh_services:
 - name: ssh_logins
   type: file
   target: "/var/log/secure"
