@@ -20,6 +20,8 @@ check system {{ monit_monitor.name }}
 check host {{ monit_monitor.name }} with address {{ monit_monitor.target }}
 {% elif monit_monitor.type == 'filesystem' %}
 check filesystem {{ monit_monitor.name }} with path {{ monit_monitor.target }}
+{% elif monit_monitor.type == 'file' %}
+check file {{ monit_monitor.name }} with path {{ monit_monitor.target }}
 {% endif -%}
 
 {% if monit_monitor.rules is defined %}
