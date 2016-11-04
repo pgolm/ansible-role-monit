@@ -5,7 +5,7 @@
     dest: "{{ monit_includes }}/{{ item.name }}"
     owner: root
     group: root
-  with_items: monit_services
+  with_items: "{{ monit_services }}"
   notify: restart monit
 
 - name: monitors - Create facts directory
@@ -35,6 +35,6 @@
   file:
     path: "{{ monit_includes }}/{{ item }}"
     state: absent
-  with_items: monit_services_present.stdout_lines
+  with_items: "{{ monit_services_present.stdout_lines }}"
   when: monit_service_delete_unlisted and item|basename not in ansible_local.monit.monit_configured_services
   notify: restart monit
