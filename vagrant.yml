@@ -71,4 +71,4 @@
       when: ansible_os_family == "RedHat"
 
   roles:
-    - .
+    - role: '{{playbook_dir}}'
