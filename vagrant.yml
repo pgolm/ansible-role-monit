@@ -44,6 +44,7 @@
     monit_mailserver_user: root
     monit_mailserver_password: root
     monit_alert_address: address@address.com
+    monit_alert_addresses: address@address.com
     monit_alert_mail_from: vagrant@localhost
     monit_alert_mail_subject: alert
     monit_alert_mail_message: |+
