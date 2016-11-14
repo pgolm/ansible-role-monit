@@ -23,7 +23,7 @@
           - "if 5 restarts within 5 cycles then timeout"
       - name: my_file
         type: file
-        target: /tmp/foo.bar
+        target: /etc/monit/monitrc
         rules:
           - "if changed timestamp then exec \"/bin/bash -c 'echo `data` >> /tmp/foo.bar.changed'\""
       - name: my_filesystem
@@ -33,7 +33,7 @@
           - "if space usage > 80% for 5 times within 15 cycles then alert"
       - name: my_directory
         type: directory
-        target: /foo
+        target: /etc/monit
         rules:
           - "if timestamp < 1 hour then alert"
       - name: google
@@ -50,15 +50,10 @@
           - "if cpu usage (user) > 70% for 8 cycles then alert"
           - "if cpu usage (system) > 40% for 8 cycles then alert"
           - "if cpu usage (wait) > 20%  for 8 cycles then alert"
-      - name: my_network
-        type: network
-        target: 127.0.0.1
-        rules:
-          - "if saturation > 90% then alert"
     monit_webinterface_enabled: true
     monit_webinterface_acl_rules:
-      - "127.0.0.1"
-    monit_webinterface_bind: 127.0.0.1
+      - "0.0.0.0/0"
+    monit_webinterface_bind: 0.0.0.0
     monit_mail_enabled: true
     monit_mailserver_host: localhost
     monit_mailserver_port: 25
