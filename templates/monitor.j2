@@ -3,6 +3,28 @@
 
 {% if monit_monitor.type == 'process' %}
 check process {{ monit_monitor.name }} with pidfile {{ monit_monitor.target }}
+{% elif monit_monitor.type == 'process_by_name' %}
+check process {{ monit_monitor.name }} with matching "{{ monit_monitor.target }}"
+{% elif monit_monitor.type == 'file' %}
+check file {{ monit_monitor.name }} with path {{ monit_monitor.target }}
+{% elif monit_monitor.type == 'fifo' %}
+check fifo {{ monit_monitor.name }} with path {{ monit_monitor.target }}
+{% elif monit_monitor.type == 'filesystem' %}
+check filesystem {{ monit_monitor.name }} with path {{ monit_monitor.target }}
+{% elif monit_monitor.type == 'directory' %}
+check directory {{ monit_monitor.name }} with path {{ monit_monitor.target }}
+{% elif monit_monitor.type == 'host' %}
+check host {{ monit_monitor.name }} with address {{ monit_monitor.target }}
+{% elif monit_monitor.type == 'system' %}
+check system {{ monit_monitor.name }}
+{% elif monit_monitor.type == 'program' %}
+check program {{ monit_monitor.name }} with path {{ monit_monitor.target }}
+{% elif monit_monitor.type == 'network' %}
+check network {{ monit_monitor.name }} with address {{ monit_monitor.target }}
+{% elif monit_monitor.type == 'network_by_interface' %}
+check network {{ monit_monitor.name }} with interface {{ monit_monitor.target }}
+{% endif -%}
+
 {% if monit_monitor.start is defined %}
   start program = "{{ monit_monitor.start }}"
   {%- if monit_monitor.user is defined %} as uid {{monit_monitor.user}}{% endif %}
@@ -14,13 +36,12 @@ check process {{ monit_monitor.name }} with pidfile {{ monit_monitor.target }}
   {%- if monit_monitor.user is defined %} as uid {{monit_monitor.user}}{% endif %}
   {%- if monit_monitor.group is defined %} and gid {{monit_monitor.group}}{% endif %}
 {% endif %}
-{% elif monit_monitor.type == 'system' %}
-check system {{ monit_monitor.name }}
-{% elif monit_monitor.type == 'host' %}
-check host {{ monit_monitor.name }} with address {{ monit_monitor.target }}
-{% elif monit_monitor.type == 'filesystem' %}
-check filesystem {{ monit_monitor.name }} with path {{ monit_monitor.target }}
-{% endif -%}
+
+{% if monit_monitor.restart is defined %}
+  restart program = "{{ monit_monitor.restart }}"
+  {%- if monit_monitor.user is defined %} as uid {{monit_monitor.user}}{% endif %}
+  {%- if monit_monitor.group is defined %} and gid {{monit_monitor.group}}{% endif %}
+{% endif %}
 
 {% if monit_monitor.rules is defined %}
 {% for rule in monit_monitor.rules %}
