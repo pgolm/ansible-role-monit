@@ -77,6 +77,7 @@ CONTRIBUTORS
 ------------
 * [Amnay](https://github.com/amnay-mo)
 * [Anthony Dmitriyev](https://github.com/antstorm)
+* [byteshiva](http://byteshiva.github.io/)
 * [Eduardo de Vera Toquero](https://github.com/etux)
 * [Manuel Tiago Pereira](http://mtpereira.github.io/)
 * [Markus Klepp](https://github.com/kh0r)
