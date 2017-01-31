@@ -3,6 +3,10 @@
   tags: monit_pkg
   when: ansible_os_family == "Debian"
 
+- include: freebsd/pkg.yml
+  tags: monit_pkg
+  when: ansible_os_family == "FreeBSD"
+
 - include: redhat/pkg.yml
   tags: monit_pkg
   when: ansible_os_family == "RedHat"

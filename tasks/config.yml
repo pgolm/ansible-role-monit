@@ -2,6 +2,9 @@
 - include_vars: debian.yml
   when:  ansible_os_family == "Debian"
 
+- include_vars: freebsd.yml
+  when:  ansible_os_family == "FreeBSD"
+
 - include_vars: redhat.yml
   when: ansible_os_family == "RedHat"
 
