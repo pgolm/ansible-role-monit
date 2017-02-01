@@ -38,6 +38,6 @@
   file:
     path: "{{ monit_includes }}/{{ item }}"
     state: absent
-  with_items: "{{ monit_services_present.stdout_lines }}"
-  when: monit_service_delete_unlisted and item|basename not in ansible_local.monit.monit_configured_services
+  with_items: "{{ monit_services_present.stdout_lines | difference(ansible_local.monit.monit_configured_services) }}"
+  when: monit_service_delete_unlisted
   notify: restart monit
