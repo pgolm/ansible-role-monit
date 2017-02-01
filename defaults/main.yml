@@ -6,6 +6,7 @@ monit_id_file: "{{ monit_lib_folder }}/id"
 
 monit_services: []
 monit_service_delete_unlisted: true
+monit_service_enabled: false
 
 monit_mail_enabled: false
 monit_mailserver_host: localhost
