@@ -3,8 +3,9 @@
   template:
     src: monitor.j2
     dest: "{{ monit_includes }}/{{ item.name }}"
-    owner: root
-    group: root
+    owner: "{{ monit_owner }}"
+    group: "{{ monit_group }}"
+    mode: 0640
   with_items: "{{ monit_services }}"
   notify: restart monit
 
@@ -12,6 +13,8 @@
   file:
     path: "/etc/ansible/facts.d"
     mode: 0755
+    owner: "{{ monit_owner }}"
+    group: "{{ monit_group }}"
     state: directory
 
 - name: monitors - Registers configured monitors

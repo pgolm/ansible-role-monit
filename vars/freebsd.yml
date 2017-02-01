@@ -1,3 +1,5 @@
 ---
 monitrc_conf: /usr/local/etc/monitrc
 monit_includes: /usr/local/etc/monit.d
+monit_owner: root
+monit_group: wheel
