@@ -11,7 +11,7 @@
 
 - name: monitors - Create facts directory
   file:
-    path: "/etc/ansible/facts.d"
+    path: "{{ monit_factsd }}"
     mode: 0755
     owner: "{{ monit_owner }}"
     group: "{{ monit_group }}"
@@ -20,7 +20,7 @@
 - name: monitors - Registers configured monitors
   template:
     src: "monit.fact.j2"
-    dest: "/etc/ansible/facts.d/monit.fact"
+    dest: "{{ monit_factsd }}/monit.fact"
     mode: 0644
   register: monit_write_facts
 

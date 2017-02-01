@@ -1,5 +1,6 @@
 ---
 monitrc_conf: /etc/monit/monitrc
 monit_includes: /etc/monit/conf.d
+monit_factsd: /etc/ansible/facts.d
 monit_owner: root
 monit_group: root
