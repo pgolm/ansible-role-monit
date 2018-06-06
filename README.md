@@ -79,6 +79,7 @@ CONTRIBUTORS
 * [Markus Klepp](https://github.com/kh0r)
 * [Panagiotis Moustafellos](https://github.com/pmoust)
 * [Peter Golm](https://github.com/pgolm)
+* [Romain Gonord](https://github.com/astik)
 * [Roozbeh Farahbod](https://github.com/roozbehf)
 * [Svend Vanderveken](https://github.com/svendx4f)
 * [Tom Naessens](https://github.com/Silox)
