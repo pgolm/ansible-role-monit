@@ -75,6 +75,7 @@ CONTRIBUTORS
 * [Anthony Dmitriyev](https://github.com/antstorm)
 * [byteshiva](http://byteshiva.github.io/)
 * [Eduardo de Vera Toquero](https://github.com/etux)
+* [Jordi Clariana](https://github.com/jordiclariana)
 * [Manuel Tiago Pereira](http://mtpereira.github.io/)
 * [Markus Klepp](https://github.com/kh0r)
 * [Panagiotis Moustafellos](https://github.com/pmoust)
