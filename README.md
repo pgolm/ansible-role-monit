@@ -51,6 +51,9 @@ Role Variables
 * `monit_webinterface_enabled`: Enable monit web interface. Defaults to `true`.
 * `monit_webinterface_bind`: IP address to bind web interface. Defaults to `0.0.0.0` (listen for external requests).
 * `monit_webinterface_port`: Port for web interface. Defaults to `2812`.
+* `monit_webinterface_ssl_enabled`: Enable SSL for monit web interface. Defaults to `false`.
+* `monit_webinterface_ssl_pemfile`: Path to the cerficate in PEM format (required when SSL is enabled for web interface). If you are using Lets Encrypt for generating the certificate, concatenate the ca chain and private key using  `cat /etc/letsencrypt/live/YOUR_DOMAIN/{privkey,fullchain}.pem  > /etc/monit/cert.pem`.
+* `monit_webinterface_ssl_selfsigned`: Allow/reject self signed certificate. Defaults to `reject`.
 * `monit_webinterface_rw_group`: Define group of users allowed to read and write on web interface. It is only applied when defined and is empty by default.
 * `monit_webinterface_r_group`: Define group of users allowed to read on web interface. It is only applied when defined and is empty by default.
 * `monit_webinterface_acl_rules`: List of ACL rules for the web interface, such as "localhost" or "hauk:password". It is only applied when defined and is empty by default. You should probably define at least one for the httpd service to start.
