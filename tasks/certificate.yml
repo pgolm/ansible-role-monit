@@ -1,0 +1,20 @@
+---
+- name: certificate - ensure directory exists for local self-signed TLS cert
+  file:
+    path: "{{ monit_webinterface_ssl_pemfile | dirname }}"
+    state: directory
+
+- name: certificate - generate certificate
+  shell: >
+    openssl req -new -x509 -days 365 -nodes
+    -out {{ monit_webinterface_ssl_pemfile }}
+    -keyout {{ monit_webinterface_ssl_pemfile }}
+    -subj "/C=XX/ST=YY/L=ZZ/O=Acme Corporation/OU=IT Department/CN={{ ansible_fqdn }}"
+
+- name: certificate - generate dhparams
+  shell: "openssl dhparam -2 2048 >> {{ monit_webinterface_ssl_pemfile }}"
+
+- name: certificate - change file permission
+  file:
+    path: "{{ monit_webinterface_ssl_pemfile }}"
+    mode: '0600'

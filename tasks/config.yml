@@ -10,7 +10,7 @@
 
 - name: create lib folder
   file: path="{{ monit_lib_folder }}" state=directory mode=0600
-  
+
 - name: config - Setup monitrc
   template:
     src: monitrc.j2
@@ -21,13 +21,7 @@
   notify: restart monit
 
 - name: config - Setup webinterface
-  template:
-    src: webinterface.j2
-    dest: "{{ monit_includes }}/webinterface"
-    owner: root
-    group: root
-    mode: 0644
-  notify: restart monit
+  include: web.yml
 
 - name: config - Setup mail alerts
   template:
