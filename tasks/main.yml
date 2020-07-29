@@ -12,3 +12,6 @@
 
 - include: monitors.yml
   tags: monit_monitors
+
+- include: service.yml
+  tags: monit_service

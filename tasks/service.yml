@@ -1,0 +1,6 @@
+---
+- name: service - ensure running and enabled
+  service:
+    name: "{{ monit_service }}"
+    state: started
+    enabled: yes
