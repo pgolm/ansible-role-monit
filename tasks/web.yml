@@ -1,4 +1,14 @@
 ---
+- name: web - check monit certificate exists
+  stat:
+    path: "{{ monit_webinterface_ssl_pemfile }}"
+  register: stat_result
+  when: monit_webinterface_ssl_enabled and monit_webinterface_ssl_pemfile != ''
+
+- name: web - create self signed certificate
+  include: certificate.yml
+  when: stat_result is defined and stat_result.stat.exists == False
+
 - name: web - Setup webinterface
   template:
     src: webinterface.j2

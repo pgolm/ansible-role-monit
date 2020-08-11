@@ -8,6 +8,12 @@ set httpd
     allow {{ rule }}
 {% endfor %}
 {% endif %}
+{%if monit_webinterface_ssl_enabled and monit_webinterface_ssl_pemfile != '' %}
+    with ssl {
+       pemfile: {{ monit_webinterface_ssl_pemfile }}
+       selfsigned: {{ monit_webinterface_ssl_selfsigned }}
+    }
+{% endif %}
 {% if monit_webinterface_rw_group is defined %}
     allow @{{ monit_webinterface_rw_group }}
 {% endif %}
