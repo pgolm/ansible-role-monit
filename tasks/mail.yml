@@ -7,4 +7,4 @@
     group: root
     mode: 0644
   notify: restart monit
-  when: monit_mail_enabled
+  when: monit_mail_enabled | bool
