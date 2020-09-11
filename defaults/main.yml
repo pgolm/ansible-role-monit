@@ -3,6 +3,7 @@ monit_log_destination: /var/log/monit.log
 monit_lib_folder: /var/lib/monit
 monit_state_file: "{{ monit_lib_folder }}/state"
 monit_id_file: "{{ monit_lib_folder }}/id"
+monit_pid_file: "/run/monit.pid"
 
 monit_services: []
 monit_service_delete_unlisted: true

@@ -23,6 +23,7 @@ Role Variables
 * `monit_log_destination`: Where the log will be written. Can be a path to a file or "syslog", which will write to syslog daemon. Defaults to `/var/log/monit.log`.
 * `monit_state_file`: State file path. Defaults to `/var/lib/monit/state`.
 * `monit_id_file`: Id file path. Defaults to `/var/lib/monit/id`.
+* `monit_pid_file`: Process id file path. If pidfile should not be used, set this variable to `""`. Defaults to `/run/monit.pid`.
 * `monit_eventqueue_dir`: Event queue directory path. It is only used when this variable is defined. Defaults to `/var/lib/monit/events`.
 * `monit_eventqueue_slots`: Event queue slots. It is only used when `monit_eventqueue_dir` is defined. Defaults to `100`.
 * `monit_services`: List of hashes of services to be monitorized by monit.
