@@ -43,6 +43,12 @@ check network {{ monit_monitor.name }} with interface {{ monit_monitor.target }}
   {%- if monit_monitor.group is defined %} and gid {{monit_monitor.group}}{% endif %}
 {% endif %}
 
+{% if monit_monitor.mode is defined %}
+  mode {{ monit_monitor.mode }}
+  {%- if monit_monitor.user is defined %} as uid {{monit_monitor.user}}{% endif %}
+  {%- if monit_monitor.group is defined %} and gid {{monit_monitor.group}}{% endif %}
+{% endif %}
+
 {% if monit_monitor.rules is defined %}
 {% for rule in monit_monitor.rules %}
   {{ rule }}

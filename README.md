@@ -31,6 +31,7 @@ Role Variables
   * `target`: Target of monitorization. Should be a pidfile, processname, an address or undefined, depending on the `type` of service.
   * `start`: Command that starts the service. Optional.
   * `stop`: Command that stop the service. Optional.
+  * `mode`: Monitoring mode, default is `active`. If `passive` is set no actio nwill be taken in case of fail, only alerts. Optional.
   * `user`: Linux username of the user starting the program. Optional.
   * `group`: Linux group of the user starting the program. Optional.
   * `rules`: List of rules to be included in this service. Optional.

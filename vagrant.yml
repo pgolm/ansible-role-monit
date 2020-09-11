@@ -18,6 +18,7 @@
         start: /usr/sbin/service apache2 start
         stop: /usr/sbin/service apache2 stop
         restart: /usr/sbin/service apache2 restart
+        mode: passive
         rules:
           - "if failed port 80 protocol http then restart"
           - "if 5 restarts within 5 cycles then timeout"
