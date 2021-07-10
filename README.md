@@ -1,14 +1,14 @@
 Monit
 ========
 
-Ansible role for configuring Monit. Sample usage see [example.yml](http://github.com/pgolm/ansible-playbook-monit/blob/master/example.yml).
+Ansible role for configuring Monit. Sample usage see [example.yml](https://github.com/Skowt/ansible-role-monit/blob/master/example.yml).
 
 Install
 -------
-Install this role with [ansible-galaxy](https://galaxy.ansible.com/pgolm/monit/).
+Install this role with [ansible-galaxy](https://galaxy.ansible.com/skowt/ansible_role_monit).
 
 ```shell
-$ ansible-galaxy install pgolm.monit
+$ ansible-galaxy install skowt.ansible_role_monit
 ```
 
 Requirements
@@ -72,6 +72,7 @@ Feel free to contribute by add issue and pull request.
 
 CONTRIBUTORS
 ------------
+* [Skowt](https://github.com/Skowt)
 * [Amnay](https://github.com/amnay-mo)
 * [Anthony Dmitriyev](https://github.com/antstorm)
 * [byteshiva](http://byteshiva.github.io/)
