@@ -10,6 +10,7 @@ monit_service_delete_unlisted: true
 monit_mail_enabled: false
 monit_mailserver_host: localhost
 monit_mailserver_port: 25
+monit_ignored_actions: "instance, action"
 
 monit_webinterface_enabled: true
 monit_webinterface_bind: 0.0.0.0

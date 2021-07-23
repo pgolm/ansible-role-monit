@@ -4,4 +4,3 @@
     name: "{{ monit_service }}"
     state: started
     enabled: yes
-

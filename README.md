@@ -1,14 +1,14 @@
 Monit
 ========
 
-Ansible role for configuring Monit. Sample usage see [example.yml](http://github.com/pgolm/ansible-playbook-monit/blob/master/example.yml).
+Ansible role for configuring Monit. Sample usage see [example.yml](https://github.com/Skowt/ansible-role-monit/blob/master/example.yml).
 
 Install
 -------
-Install this role with [ansible-galaxy](https://galaxy.ansible.com/pgolm/monit/).
+Install this role with [ansible-galaxy](https://galaxy.ansible.com/skowt/ansible_role_monit).
 
 ```shell
-$ ansible-galaxy install pgolm.monit
+$ ansible-galaxy install skowt.ansible_role_monit
 ```
 
 Requirements
@@ -43,6 +43,7 @@ Role Variables
 * `monit_mailserver_timeout`: Timeout for mailserver connection. Defaults to `5`.
 * `monit_mailserver_ssl_version`: If defined, monit will use this algorithm for SSL connection to the mail server. Possible values are `SSLAUTO`, `SSLV2`, `SSLV3`, `TLSV1`, `TLSV11`, `TLSV12`.
 * `monit_alert_addresses`: List of mail addresses where the alerts will be sent to.
+* `monit_ignored_actions`: List of actions that shouldn't trigger an email. Optional.
 * `monit_alert_mail_format`: A hash of options for mail-format.
   * `from`: Sender mail address.
   * `reply-to`: A reply-to mail address.
@@ -71,6 +72,7 @@ Feel free to contribute by add issue and pull request.
 
 CONTRIBUTORS
 ------------
+* [Skowt](https://github.com/Skowt)
 * [Amnay](https://github.com/amnay-mo)
 * [Anthony Dmitriyev](https://github.com/antstorm)
 * [byteshiva](http://byteshiva.github.io/)
