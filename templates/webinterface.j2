@@ -3,6 +3,26 @@
 set httpd
   port {{ monit_webinterface_port }}
   use address {{ monit_webinterface_bind }}
+  {% if monit_webinterface_tls_enabled is defined and monit_webinterface_tls_enabled -%}
+  with ssl {
+    {% if monit_webinterface_tls_versions is defined -%}
+    version: {{ monit_webinterface_tls_versions }}
+    {% endif -%}
+    verify: enable
+    {% if monit_webinterface_tls_allow_self_signed is defined and monit_webinterface_tls_allow_self_signed -%}
+    selfsigned: allow
+    {% endif -%}
+    {% if monit_webinterface_tls_ciphers is defined -%}
+    ciphers: {{ monit_webinterface_tls_ciphers }}
+    {% endif -%}
+    {% if monit_webinterface_tls_pemfile is defined -%}
+    pemfile: {{ monit_webinterface_tls }}/pemfile
+    {% endif -%}
+    {% if monit_webinterface_tls_client_pemfile is defined -%}
+    clientpemfile: {{ monit_webinterface_tls }}/clientpemfile
+    {% endif -%}
+  }
+  {% endif -%}
 {% if monit_webinterface_acl_rules is defined %}
 {% for rule in monit_webinterface_acl_rules %}
     allow {{ rule }}

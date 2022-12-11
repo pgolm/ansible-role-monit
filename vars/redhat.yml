@@ -2,3 +2,4 @@
 monit_service: monit
 monitrc_conf: /etc/monitrc
 monit_includes: /etc/monit.d
+monit_webinterface_tls: /etc/monit.tls

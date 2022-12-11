@@ -71,6 +71,7 @@
                  Description: $DESCRIPTION
             Your faithful employee,
             Monit
+    monit_webinterface_tls_enabled: false
 
   pre_tasks:
     - name: testing - install apache - debian

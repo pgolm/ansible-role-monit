@@ -54,6 +54,12 @@ Role Variables
 * `monit_webinterface_rw_group`: Define group of users allowed to read and write on web interface. It is only applied when defined and is empty by default.
 * `monit_webinterface_r_group`: Define group of users allowed to read on web interface. It is only applied when defined and is empty by default.
 * `monit_webinterface_acl_rules`: List of ACL rules for the web interface, such as "localhost" or "hauk:password". It is only applied when defined and is empty by default. You should probably define at least one for the httpd service to start.
+* `monit_webinterface_tls_enabled`: Enable web interface's SSL/TLS configuration. Defaults to `false`.
+* `monit_webinterface_tls_versions`: Set the specific SSL/TLS version to use. By default only TLS 1.2 and 1.3 are allowed.
+* `monit_webinterface_tls_allow_self_signed`: Use this option to allow self-signed certificates.
+* `monit_webinterface_tls_ciphers`: Override default SSL/TLS ciphers. 
+* `monit_webinterface_tls_pemfile`: Pemfile to define monit web server certificate. Prefered way is to use a ansible-vault-encrypted pemfile.
+* `monit_webinterface_tls_client_pemfile`: Pemfile to define monit web server client certificate. Prefered way is to use a ansible-vault-encrypted pemfile.
 
 Custom facts
 ------------
