@@ -1,8 +1,34 @@
 ---
+
+- name: create tls folder
+  file: path={{ monit_webinterface_tls }} state=directory mode=0600
+  when: monit_webinterface_tls_enabled
+
+- name: copy pemfile
+  ansible.builtin.copy:
+    src: "{{ monit_webinterface_tls_pemfile }}"
+    dest: "{{ monit_webinterface_tls }}/pemfile"
+    owner: root
+    group: root
+    mode: 0600
+  notify: restart monit
+  when: monit_webinterface_tls_pemfile is defined
+
+- name: copy client pemfile
+  ansible.builtin.copy:
+    src: "{{ monit_webinterface_tls_client_pemfile }}"
+    dest: "{{ monit_webinterface_tls }}/clientpemfile"
+    owner: root
+    group: root
+    mode: 0600
+  notify: restart monit
+  when: monit_webinterface_tls_client_pemfile is defined
+
 - name: web - Setup webinterface
   template:
     src: webinterface.j2
     dest: "{{ monit_includes }}/webinterface"
     owner: root
     group: root
+    mode: 0644
   notify: restart monit
