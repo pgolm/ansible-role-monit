@@ -1,8 +1,21 @@
 # {{ ansible_managed }}
 {% if monit_webinterface_enabled %}
 set httpd
-  port {{ monit_webinterface_port }}
-  use address {{ monit_webinterface_bind }}
+{% if monit_webinterface_socket_path is not defined %}
+    port {{ monit_webinterface_port }}
+    use address {{ monit_webinterface_bind }}
+{% else %}
+    unixsocket {{ monit_webinterface_socket_path }}
+{% if monit_webinterface_socket_owner is defined %}
+    uid {{ monit_webinterface_socket_owner }}
+{% endif %}
+{% if monit_webinterface_socket_group is defined %}
+    gid {{ monit_webinterface_socket_group }}
+{% endif %}
+{% if monit_webinterface_socket_mode is defined %}
+    permission {{ monit_webinterface_socket_mode }}
+{% endif %}
+{% endif %}
 {% if monit_webinterface_acl_rules is defined %}
 {% for rule in monit_webinterface_acl_rules %}
     allow {{ rule }}
